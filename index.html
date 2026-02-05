@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>街口支付喚起測試</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .pay-btn {
+            background-color: #c8102e; /* 街口红 */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .debug-text {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            word-break: break-all;
+            padding: 0 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <a id="jkosLink" class="pay-btn" href="#">
+        點擊支付 (Open Jkopay)
+    </a>
+
+    <div class="debug-text">
+        正在喚起 URL: jkos://OnlinePay/...
+    </div>
+
+    <script>
+        // 你的原始 URL字符串
+        var rawUrl = "jkos://OnlinePay/j=OL%231%3aENT%23dXp6eWdVL1pCZk5LOTJDZkpwbzlWUT09%3aS%23c71b1881-4b2f-11f0-bdc1-f8f21e0d1b98%3aA%2318197%3aCUR%23TWD%3aSRC%23REDIRECT_MWEB%3aUNRDM%230.00%3aFX%230%3aTA%2318197%3aTCUR%23TWD%3aFXR%231.00%3aUR%231%3aD%23D&s=df08185483b3ebd8793cb32ed8ac1bc593b17e929ff5abdd3a808bc23936685e";
+
+        // 获取按钮元素
+        var linkBtn = document.getElementById('jkosLink');
+
+        // 设置 href
+        linkBtn.href = rawUrl;
+
+        // 【可选】如果你发现无法唤起，可能是因为特殊字符问题
+        // 某些浏览器对 URL 中的 '#' 处理敏感，可能需要把 '#' 替换为 '%23'
+        // 如果上面的 rawUrl 不行，请尝试打开下面这行注释：
+        // linkBtn.href = rawUrl.replace(/#/g, '%23');
+    </script>
+</body>
+</html>
